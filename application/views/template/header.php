@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="shortcut icon" href=" <?= base_url('assets') ?>/images/favicon.ico">
+  <link rel="shortcut icon" href=" <?= base_url('assets') ?>/favicon.ico">
   <title><?= $judul; ?></title>
 
   <!-- Custom fonts for this template-->
@@ -34,13 +34,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
+      <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/images/logo_kab.png'); ?>" width="50" height="50" alt="Logo PT.HRS">
+            <img src="<?= base_url('assets/pemda-tapin.png'); ?>" width="50" height="60" alt="Logo Pemda-Tapin">
           </div>
-          <div class="sidebar-brand-text mx-3">ESDM</div>
+          <div class="sidebar-brand-text mx-3">Pemda Tapin</div>
         </a>
         <!-- Divider -->
         <hr class="sidebar-divider my-0">

@@ -1,4 +1,4 @@
-<body class="bg-gradient-warning">
+<body class="bg-gradient-success">
     <div class="mbr-slider slide carousel" data-keyboard="false" data-ride="carousel" data-interval="2000" data-pause="true">
         <div class="container">
             <!-- Outer Row -->
@@ -13,7 +13,7 @@
                                         <div class="text-center mb-2">
 
                                             <img src="<?= base_url('assets/images/logo_kab.png') ?>" width="100px">
-                                            <h3>Dinas Energi Dan Sumber Daya Mineral Provinsi Kalimantan Selatan</h3>
+                                            <h3>Pemerintahan Daerah Kabupaten Tapin</h3>
                                             <hr>
                                             <h4>Login Pegawai</h4>
                                             <hr>
@@ -35,12 +35,13 @@
                                                 <input type="password" class="form-control" name="password" placeholder="Password">
                                             </div>
 
-                                            <button type="submit" class="btn btn-warning btn-user btn-block">
+                                            <button type="submit" class="btn btn-success btn-user btn-block">
                                                 Masuk
                                             </button>
                                             <div class="d-flex justify-content-center mb-4 mt-3">
                                                 <small>
-                                                    <a href="<?= base_url('auth/index') ?>">Masuk Sebagai Admin</a></div>
+                                                    <a href="<?= base_url('auth/index') ?>">Masuk Sebagai Admin</a>
+                                            </div>
                                             </small>
                                         </form>
                                         <hr>

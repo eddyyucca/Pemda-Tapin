@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+
 class Auth extends CI_Controller
 {
+
     public function __construct()
     {
         parent::__construct();
@@ -22,9 +24,9 @@ class Auth extends CI_Controller
     {
         $data['data'] = false;
         $data['pesan'] = $this->session->flashdata('pesan');
-        $data['judul'] = 'Login';
+        $data['judul'] = 'Login User';
         $this->load->view('auth/template_auth/header', $data);
-        $this->load->view('auth/index', $data);
+        $this->load->view('auth/user_login', $data);
         $this->load->view('auth/template_auth/footer', $data);
     }
 
@@ -67,7 +69,6 @@ class Auth extends CI_Controller
             }
         }
     }
-
     public function auth_user()
     {
         $this->form_validation->set_rules('nip', 'NIP Pegawai', 'required');

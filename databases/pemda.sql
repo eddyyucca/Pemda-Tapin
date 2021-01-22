@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 06 Des 2020 pada 12.24
--- Versi server: 10.4.13-MariaDB
--- Versi PHP: 7.4.8
+-- Host: localhost
+-- Waktu pembuatan: 22 Jan 2021 pada 14.08
+-- Versi server: 10.4.16-MariaDB
+-- Versi PHP: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `esdm`
+-- Database: `pemda`
 --
 
 -- --------------------------------------------------------
@@ -39,7 +39,8 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`id_akun`, `nip`, `password`, `level`) VALUES
-(9, '199741777', '792fee80878489492e0b84364561ab43', 'admin');
+(12, '1001', 'b8c37e33defde51cf91e1e03e51657da', 'user'),
+(14, '666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin');
 
 -- --------------------------------------------------------
 
@@ -60,8 +61,7 @@ CREATE TABLE `berkas` (
 --
 
 INSERT INTO `berkas` (`id_berkas`, `nip`, `file`, `date`, `status_pengajuan`) VALUES
-(3, '199741777', 'transkip_nilai-dikompresi.pdf', '06-12-2020', 'Diterima'),
-(4, '199741777', 'transkip_nilai-dikompresi1.pdf', '06-12-2020', 'Ditolak');
+(7, '666', '', '2021-01-01', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -79,7 +79,7 @@ CREATE TABLE `bidang` (
 --
 
 INSERT INTO `bidang` (`id_bidang`, `nama_bidang`) VALUES
-(2, 'okokok');
+(2, 'Umum & Kepegawaian');
 
 -- --------------------------------------------------------
 
@@ -97,9 +97,9 @@ CREATE TABLE `jabatan` (
 --
 
 INSERT INTO `jabatan` (`id_jab`, `nama_jab`) VALUES
-(2, 'tes 123'),
-(3, 'sajjas'),
-(4, 'sasa');
+(5, 'Kepala Bidang'),
+(6, 'Kepala Dinas'),
+(7, 'Pegawai');
 
 -- --------------------------------------------------------
 
@@ -125,6 +125,7 @@ CREATE TABLE `pegawai` (
   `jabatan` varchar(20) NOT NULL,
   `bidang` varchar(20) NOT NULL,
   `status_pegawai` varchar(50) NOT NULL,
+  `mulai_bekerja` varchar(50) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -132,8 +133,9 @@ CREATE TABLE `pegawai` (
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama_lengkap`, `nama_panggilan`, `jk`, `tempat`, `ttl`, `alamat_saat_ini`, `alamat_permanen`, `no_telp`, `agama`, `no_ktp`, `hobi`, `email`, `jabatan`, `bidang`, `status_pegawai`, `foto`) VALUES
-(7, '199741777', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'tapin', '1997-04-17', 'saa', 'sas', '081250653005', 'Islam', 1997417, 'Jalan-Jalan', 'eddyyucca@gmail.com', '4', '2', 'Aktif', 'foto.jpg');
+INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama_lengkap`, `nama_panggilan`, `jk`, `tempat`, `ttl`, `alamat_saat_ini`, `alamat_permanen`, `no_telp`, `agama`, `no_ktp`, `hobi`, `email`, `jabatan`, `bidang`, `status_pegawai`, `mulai_bekerja`, `foto`) VALUES
+(10, '1001', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'banjarbaru', '1997-04-17', 'Tapin', 'Tapin', '085248665646', 'Islam', 1001, 'membaca', 'eddyyucca@gmail.com', '5', '2', 'Aktif', '2004-02-03', ''),
+(12, '666', 'indra', 'indra', 'Laki-Laki', 'tapin', '1997-12-04', 'tapin', 'tapin', '081250653005', 'Islam', 666, 'Jalan-Jalan', 'indra@gmail.com', '6', '2', 'Aktif', '2021-01-01', '');
 
 --
 -- Indexes for dumped tables
@@ -177,13 +179,13 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT untuk tabel `berkas`
 --
 ALTER TABLE `berkas`
-  MODIFY `id_berkas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_berkas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `bidang`
@@ -195,13 +197,13 @@ ALTER TABLE `bidang`
 -- AUTO_INCREMENT untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id_jab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_jab` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_pegawai` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

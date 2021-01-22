@@ -12,7 +12,7 @@
                                     <div class="p-5">
                                         <div class="text-center">
 
-                                            <img src="<?= base_url('assets/pemda_tapin.png') ?>" width="100px">
+                                            <img src="<?= base_url('assets/pemda-tapin.png') ?>" width="100px">
                                             <h3>Pemerintahan Daerah Kabupaten Tapin</h3>
                                             <hr>
                                             <!-- <h1 class="h4 text-gray-900 mb-4">Login</h1> -->
