@@ -63,6 +63,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url('admin/jabatan') ?>">Data Jabatan</a>
               <a class="collapse-item" href="<?= base_url('admin/bidang') ?>">Data Bidang</a>
+              <a class="collapse-item" href="<?= base_url('atk/view_data') ?>">Data ATK</a>
             </div>
           </div>
         </li>

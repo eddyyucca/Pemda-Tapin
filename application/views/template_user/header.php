@@ -38,7 +38,7 @@
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('user') ?>">
           <div class="sidebar-brand-icon">
-            <img src="<?= base_url('assets/pemda-tapinpng'); ?>" width="50" height="60" alt="Logo pemda-tapin">
+            <img src="<?= base_url('assets/pemda-tapin.png'); ?>" width="50" height="60" alt="Logo pemda-tapin">
           </div>
           <div class="sidebar-brand-text mx-3">Pemda Tapin</div>
         </a>
@@ -76,6 +76,18 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url('user/pengajuan') ?>">Pengajuan</a>
               <a class="collapse-item" href="<?= base_url('user/history_pengajuan') ?>">History</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ATK" aria-expanded="true" aria-controls="ATK">
+            <i class="fas fa-database"></i>
+            <span>ATK</span>
+          </a>
+          <div id="ATK" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('atk/pengajuan') ?>">Pengajuan ATK</a>
+              <a class="collapse-item" href="<?= base_url('atk/history_pengajuan') ?>">Riwayat Pengajuan</a>
             </div>
           </div>
         </li>
