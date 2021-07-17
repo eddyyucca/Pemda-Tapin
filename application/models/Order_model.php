@@ -8,7 +8,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('jabatan', 'jabatan.id_jab = order_status.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
         $this->db->where('status', 2);
         $query = $this->db->get();
 
@@ -19,7 +19,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('jabatan', 'jabatan.id_jab = order_status.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
         $this->db->where('status', 1);
 
         $query = $this->db->get();
@@ -31,7 +31,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('jabatan', 'jabatan.id_jab = order_status.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
         $this->db->where('status', 4);
 
         $query = $this->db->get();
@@ -43,7 +43,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('jabatan', 'jabatan.id_jab = order_status.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.bidang');
         $this->db->where('status', 1);
 
         $this->db->like('tanggal', $cari);
@@ -102,7 +102,7 @@ class Order_model extends CI_Model
     public function dep($x)
     {
         $this->db->where('id', $x);
-        $query = $this->db->get('jabatan');
+        $query = $this->db->get('bidang');
         return $query->row();
     }
 
@@ -110,7 +110,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('jabatan', 'jabatan.id = order_status.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
         $this->db->where('status', 3);
         $query = $this->db->get();
 
@@ -128,7 +128,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status as bulan');
-        $this->db->join('jabatan', 'jabatan.id = bulan.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = bulan.id_bidang');
         $this->db->where('YEAR(bulan.tanggal)', $tahun);
         $this->db->where('MONTH(bulan.tanggal)', $bulan);
         $query = $this->db->get();
@@ -139,13 +139,10 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('jabatan', 'jabatan.id = order_status.jabatan');
-        $this->db->where('jabatan', $data_cari);
-
-        $this->db->like('jabatan', $data_cari);
-
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
+        $this->db->where('bidang', $data_cari);
+        $this->db->like('bidang', $data_cari);
         $query = $this->db->get();
-
         return $query->result();
     }
 

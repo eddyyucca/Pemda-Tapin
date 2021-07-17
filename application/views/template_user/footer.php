@@ -63,7 +63,7 @@
    <!-- Page level custom scripts -->
    <script src="<?= base_url('assets') ?>/js/demo/chart-area-demo.js"></script>
    <script src="<?= base_url('assets') ?>/js/demo/chart-pie-demo.js"></script>
-
+   <script src="<?= base_url('assets') ?>/js/qty.js"></script>
    <script>
      $(document).on("click", ".browse", function() {
        var file = $(this).parents().find(".file");

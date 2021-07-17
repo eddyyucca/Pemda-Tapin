@@ -80,18 +80,31 @@
           </div>
         </li>
         <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Absensi" aria-expanded="true" aria-controls="Absensi">
+            <i class="fas fa-database"></i>
+            <span>Absensi</span>
+          </a>
+          <div id="Absensi" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('user/absensi') ?>">Absensi</a>
+              <a class="collapse-item" href="<?= base_url('user/riwayat_absensi') ?>">Riwayat Absensi</a>
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#ATK" aria-expanded="true" aria-controls="ATK">
             <i class="fas fa-database"></i>
             <span>ATK</span>
           </a>
-          <div id="ATK" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div id="ATK" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('atk/pengajuan') ?>">Pengajuan ATK</a>
-              <a class="collapse-item" href="<?= base_url('atk/history_pengajuan') ?>">Riwayat Pengajuan</a>
+              <a class="collapse-item" href="<?= base_url('user/atk') ?>">Pengajuan ATK</a>
+              <a class="collapse-item" href="<?= base_url('user/keranjang') ?>">Keranjangn (<?php echo count($keranjang); ?>)</a>
+              <a class="collapse-item" href="<?= base_url('user/history_pengajuan') ?>">Riwayat Pengajuan</a>
+              <a class="collapse-item" href="<?= base_url('user/status'); ?>">Status</a>
             </div>
           </div>
         </li>
-
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 

@@ -67,7 +67,33 @@
             </div>
           </div>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Order</span>
+          </a>
+          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Order Persetujuan</a>
+              <a class="collapse-item" href="<?= base_url('order') ?>">Order Tunggu</a>
 
+            </div>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo2">
+            <i class="fas fa-table"></i>
+            <span>Laporan Order ATK</span>
+          </a>
+          <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <a class="collapse-item" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
+              <a class="collapse-item" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
+              <a class="collapse-item" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
+              <a class="collapse-item" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
+            </div>
+          </div>
+        </li>
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pegawai" aria-expanded="true" aria-controls="pegawai">
             <i class="fas fa-database"></i>

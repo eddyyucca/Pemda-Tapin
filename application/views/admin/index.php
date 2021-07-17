@@ -7,6 +7,16 @@
                 Menu
             </div>
             <div class="card-body">
+                <div class="col-lg-12">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-chart-bar mr-1"></i>
+                            Statistik Absensi
+                        </div>
+                        <div class="card-body"><canvas id="myBarChart" width="100%" height="100"></canvas></div>
+                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    </div>
+                </div>
                 <div class="row">
                     <!-- mulai -->
                     <div class="col-xl-3 col-md-6 mb-4">
