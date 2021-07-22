@@ -21,7 +21,6 @@ class User extends CI_Controller
     }
     public function index()
     {
-        $id_pegawai = $this->session->userdata('id_pegawai');
         $data['judul'] = 'Dashboard Pegawai';
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $id_pegawai =  $this->session->userdata('id_pegawai');
@@ -292,7 +291,7 @@ class User extends CI_Controller
             'item' => $this->input->post('item'),
             'name' => $this->session->userdata('nama_user'),
             'qty' => $this->input->post('qty'),
-            'id_dep' => $this->session->userdata('id_dep'),
+            'bidang' => $this->session->userdata('bidang'),
             'satuan' =>  $this->input->post('satuan'),
             'tanggal' => date('Y-m-d')
         );
@@ -337,7 +336,7 @@ class User extends CI_Controller
                 'id_keranjang' => $id_x,
                 'id_barang' => $item['id'],
                 'qty_order' => $item['qty'],
-                'id_dep' => $item['id_dep'],
+                'bidang' => $item['bidang'],
                 'user_id' => $item['name'],
                 'tanggal' => $item['tanggal']
             );
@@ -346,7 +345,7 @@ class User extends CI_Controller
 
         $keranjang = array(
             'id_ker' => $id_x,
-            'departemen' => $item['id_dep'],
+            'departemen' => $item['bidang'],
             'user' => $item['name'],
             'status' => '3',
             'tanggal' => $item['tanggal']
@@ -360,11 +359,39 @@ class User extends CI_Controller
     {
         $data['judul'] = 'Status Order';
         $data['nama'] = $this->session->userdata('nama_user');
-        $id_bidang = $this->session->userdata('id_bidang');
-        $data['data'] = $this->atk_model->status($id_bidang);
+        $bidang = $this->session->userdata('bidang');
+        $data['data'] = $this->atk_model->status($bidang);
         $data['keranjang'] = $this->cart->contents();
         $this->load->view('template_user/header', $data);
         $this->load->view('user/atk/status', $data);
+        $this->load->view('template_user/footer');
+    }
+    public function absensi()
+    {
+        $data['judul'] = 'Upload SK Terakhir';
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $id_pegawai =  $this->session->userdata('id_pegawai');
+        $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+        $nip =  $this->session->userdata('nip');
+        $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+        $data['pesan'] = false;
+        $data['keranjang'] = $this->cart->contents();
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/absensi/absensi', $data);
+        $this->load->view('template_user/footer');
+    }
+    public function riwayat_absensi()
+    {
+        $data['judul'] = 'Upload SK Terakhir';
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $id_pegawai =  $this->session->userdata('id_pegawai');
+        $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+        $nip =  $this->session->userdata('nip');
+        $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+        $data['pesan'] = false;
+        $data['keranjang'] = $this->cart->contents();
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/absensi/riwayat_absensi', $data);
         $this->load->view('template_user/footer');
     }
 }   
