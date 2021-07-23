@@ -4,7 +4,7 @@
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header">
-                Order Ditolak
+                Order Pending
             </div>
             <div class="card">
                 <div class="card-body">
@@ -32,7 +32,7 @@
                                                     <td><?= $x->nama_bidang; ?></td>
                                                     <td><?= $x->tanggal; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= base_url('order/view_selesai/') . $x->id_peg ?>" class="btn btn-primary">View</a>
+                                                        <a href="<?= base_url('order_barang/view/') . $x->id_peg ?>" class="btn btn-primary">View</a>
                                                         <a href="<?= base_url('order/hapusorder/') . $x->id_peg ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>

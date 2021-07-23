@@ -4,17 +4,17 @@
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header">
-                <a href="<?= base_url('order/laporan_departemen') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+                <a href="<?= base_url('order/laporan_bidang') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= base_url('order/laporan_departemen') ?>" method="post">
+                    <form action="<?= base_url('order/laporan_bidang') ?>" method="post">
                         <div class="input-group mb-3 col-6">
                             <div class="form-group mr-1">
                                 <select name="laporan_dep" class="custom-select">
-                                    <option value="">--PILIH DEPARTEMEN--</option>
-                                    <?php foreach ($data_departemen as $x) : ?>
-                                        <option value="<?= $x->id; ?>"><?= $x->nama_dep; ?></option>
+                                    <option value="">--PILIH BIDANG--</option>
+                                    <?php foreach ($data_bidang as $x) : ?>
+                                        <option value="<?= $x->id_bidang; ?>"><?= $x->nama_bidang; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -33,7 +33,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>User</th>
-                                                <th>Departemen</th>
+                                                <th>Bidang</th>
                                                 <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -45,15 +45,14 @@
                                                 <tr>
                                                     <td><?= $nomor++; ?></td>
                                                     <td><?= $x->user; ?></td>
-                                                    <td><?= $x->nama_dep; ?></td>
+                                                    <td><?= $x->nama_bidang; ?></td>
                                                     <td><?= $x->tanggal; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= base_url('order/view_selesai/') . $x->id_ker ?>" class="btn btn-primary">View</a>
-                                                        <a href="<?= base_url('order/hapusorder/') . $x->id_ker ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
+                                                        <a href="<?= base_url('order/view_selesai/') . $x->id_peg ?>" class="btn btn-primary">View</a>
+                                                        <a href="<?= base_url('order/hapusorder/') . $x->id_peg ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>
-                                            <?php }
-                                            ?>
+                                            <?php } ?>
                                         </tbody>
                                 </table>
                             </div>

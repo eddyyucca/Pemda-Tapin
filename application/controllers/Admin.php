@@ -484,6 +484,16 @@ class Admin extends CI_Controller
         return redirect('data_pengajuan');
     }
     //end menerima pengajuan
+    public function absen($id_peg)
+    {
+        $tahun = date('Y');
+        $data['judul'] = 'Absensi';
+        $data['absen'] = $this->pegawai_m->absen($id_peg);
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/absen/view_absen', $data);
+        $this->load->view('template/footer');
+    }
 }
 
 /* End of file Admin.php */

@@ -289,13 +289,15 @@ class User extends CI_Controller
             'id' => $id,
             'price' => '',
             'item' => $this->input->post('item'),
-            'name' => $this->session->userdata('nama_user'),
+            'name' => $this->session->userdata('nama_lengkap'),
             'qty' => $this->input->post('qty'),
             'bidang' => $this->session->userdata('bidang'),
             'satuan' =>  $this->input->post('satuan'),
             'tanggal' => date('Y-m-d')
         );
         $this->cart->insert($data_barang);
+
+        var_dump($data_barang);
         redirect('user/atk');
     }
 
@@ -336,7 +338,7 @@ class User extends CI_Controller
                 'id_keranjang' => $id_x,
                 'id_barang' => $item['id'],
                 'qty_order' => $item['qty'],
-                'bidang' => $item['bidang'],
+                'id_bidang' => $item['bidang'],
                 'user_id' => $item['name'],
                 'tanggal' => $item['tanggal']
             );
@@ -344,8 +346,8 @@ class User extends CI_Controller
         }
 
         $keranjang = array(
-            'id_ker' => $id_x,
-            'departemen' => $item['bidang'],
+            'id_peg' => $id_x,
+            'id_bidang' => $item['bidang'],
             'user' => $item['name'],
             'status' => '3',
             'tanggal' => $item['tanggal']

@@ -27,7 +27,7 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>User</th>
-                                                <th>Departemen</th>
+                                                <th>Bidang</th>
                                                 <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
@@ -39,13 +39,11 @@
                                                 <tr>
                                                     <td><?= $nomor++; ?></td>
                                                     <td><?= $x->user; ?></td>
-                                                    <td><?= $x->nama_dep; ?></td>
+                                                    <td><?= $x->nama_bidang; ?></td>
                                                     <td><?= $x->tanggal; ?></td>
                                                     <td align="center">
-                                                        <a href="<?= base_url('order/view_selesai/') . $x->id_ker ?>" class="btn btn-primary">View</a>
-
-                                                        <a href="<?= base_url('order/hapusorder/') . $x->id_ker ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
-
+                                                        <a href="<?= base_url('order/view_selesai/') . $x->id_peg ?>" class="btn btn-primary">View</a>
+                                                        <a href="<?= base_url('order/hapusorder/') . $x->id_peg ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                                     </td>
                                                 </tr>
                                             <?php } ?>

@@ -7,7 +7,7 @@ class Akun_model extends CI_Model
 
     public function getDataDepartemen()
     {
-        $query = $this->db->get('departemen');
+        $query = $this->db->get('bidang');
         return $query->result();
     }
 

@@ -193,20 +193,20 @@ class Order extends CI_Controller
         $this->load->view('template/footer');
     }
 
-    public function laporan_departemen()
+    public function laporan_bidang()
     {
-        $data_cari = $this->input->post('laporan_dep');
+        $data_cari = $this->input->post('laporan_bidang');
 
         $data['judul'] = 'laporan order departemen';
         $data['alerts'] = $this->order_model->getDataJoin();
         $data['alerts_3'] = $this->order_model->alerts_3();
         $data['data'] = $this->order_model->cari_departemen($data_cari);
-        $data['data_departemen'] = $this->akun_model->getDataDepartemen();
+        $data['data_bidang'] = $this->akun_model->getDataDepartemen();
         $data['nama'] = $this->session->userdata('nama_user');
         $data['level_akun'] = $this->session->userdata('level');
 
         $this->load->view('template/header', $data);
-        $this->load->view('order/laporan_departemen', $data);
+        $this->load->view('order/laporan_bidang', $data);
         $this->load->view('template/footer');
     }
     public function order_makanan()

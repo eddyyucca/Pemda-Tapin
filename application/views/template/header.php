@@ -74,7 +74,7 @@
           </a>
           <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="<?= base_url('kepala_gs/order_persetujuan') ?>">Order Persetujuan</a>
+              <a class="collapse-item" href="<?= base_url('order_barang/order_persetujuan') ?>">Order Persetujuan</a>
               <a class="collapse-item" href="<?= base_url('order') ?>">Order Tunggu</a>
 
             </div>
@@ -88,7 +88,7 @@
           <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url('order/laporan_bulanan') ?>">Laporan Order Bulanan</a>
-              <a class="collapse-item" href="<?= base_url('order/laporan_departemen') ?>">Laporan Departemen</a>
+              <a class="collapse-item" href="<?= base_url('order/laporan_bidang') ?>">Laporan Bidang</a>
               <a class="collapse-item" href="<?= base_url('order/order_selesai') ?>">Order Selesai</a>
               <a class="collapse-item" href="<?= base_url('order/order_ditolak') ?>">Order Ditolak</a>
             </div>

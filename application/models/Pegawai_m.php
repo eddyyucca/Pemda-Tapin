@@ -85,6 +85,11 @@ class Pegawai_m extends CI_Model
         $this->db->order_by('id_absen', 'DESC');
         return $this->db->get('absen')->result();
     }
+    public function absen($id_peg)
+    {
+        $this->db->where('id_peg', $id_peg);
+        return $this->db->get('absen')->result();
+    }
 }
 
 /* End of file Pegawai_m.php */

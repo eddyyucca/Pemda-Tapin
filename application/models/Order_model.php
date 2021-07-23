@@ -77,7 +77,7 @@ class Order_model extends CI_Model
 
     public function delkeranjang($id)
     {
-        $this->db->where('id_ker', $id);
+        $this->db->where('id_peg', $id);
         $this->db->delete('order_status');
     }
 
@@ -95,7 +95,7 @@ class Order_model extends CI_Model
 
     public function update_status($data_status, $id)
     {
-        $this->db->where('id_ker', $id);
+        $this->db->where('id_peg', $id);
         $this->db->update('order_status', $data_status);
     }
 
@@ -119,7 +119,7 @@ class Order_model extends CI_Model
 
     public function status($id)
     {
-        $this->db->where('id_ker', $id);
+        $this->db->where('id_peg', $id);
         $x = $this->db->get('order_status');
         return $x->row();
     }
@@ -140,8 +140,8 @@ class Order_model extends CI_Model
         $this->db->select('*');
         $this->db->from('order_status');
         $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
-        $this->db->where('bidang', $data_cari);
-        $this->db->like('bidang', $data_cari);
+        // $this->db->where('id_bidang', $data_cari);
+        // $this->db->like('bidang', $data_cari);
         $query = $this->db->get();
         return $query->result();
     }

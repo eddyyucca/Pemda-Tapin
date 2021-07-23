@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Jun 2021 pada 16.19
+-- Waktu pembuatan: 23 Jul 2021 pada 15.38
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -24,6 +24,28 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `absen`
+--
+
+CREATE TABLE `absen` (
+  `id_absen` int(11) NOT NULL,
+  `id_peg` varchar(100) NOT NULL,
+  `tanggal` varchar(25) NOT NULL,
+  `waktu` varchar(50) NOT NULL,
+  `tipe` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `absen`
+--
+
+INSERT INTO `absen` (`id_absen`, `id_peg`, `tanggal`, `waktu`, `tipe`) VALUES
+(12, '1001', '2021-07-23', '02:24:25', 'Jam Masuk'),
+(13, '1001', '2021-07-23', '02:24:28', 'Jam Pulang');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `akun`
 --
 
@@ -39,7 +61,7 @@ CREATE TABLE `akun` (
 --
 
 INSERT INTO `akun` (`id_akun`, `nip`, `password`, `level`) VALUES
-(12, '1001', 'b8c37e33defde51cf91e1e03e51657da', 'user'),
+(12, '1001', 'fae0b27c451c728867a567e8c1bb4e53', 'user'),
 (14, '666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin');
 
 -- --------------------------------------------------------
@@ -99,8 +121,8 @@ CREATE TABLE `data_barang` (
 --
 
 INSERT INTO `data_barang` (`id`, `item`, `qty`, `satuan`) VALUES
-(1, 'Amplop Coklat C3', '5', 'Pack'),
-(2, 'Amplop Coklat D (folio) Samson', '5', 'Pack'),
+(1, 'Amplop Coklat C3', '4', 'Pack'),
+(2, 'Amplop Coklat D (folio) Samson', '3', 'Pack'),
 (3, 'Amplop jaya 95x152mm', '11', 'Pack'),
 (4, 'Amplop Surat Putih (110 x 230 mm)', '1', 'Pack'),
 (5, 'Ball Point Snowman V5 Hitam', '50', 'Pcs'),
@@ -183,19 +205,90 @@ CREATE TABLE `data_order` (
   `id_order` int(10) NOT NULL,
   `id_keranjang` varchar(255) NOT NULL,
   `id_barang` varchar(255) NOT NULL,
-  `id_jab` varchar(255) NOT NULL,
+  `id_bidang` varchar(255) NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `qty_order` varchar(255) NOT NULL,
   `tanggal` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `data_order`
+-- Struktur dari tabel `data_pasangan`
 --
 
-INSERT INTO `data_order` (`id_order`, `id_keranjang`, `id_barang`, `id_jab`, `user_id`, `qty_order`, `tanggal`) VALUES
-(80, '1', '1', '3', 'hr', '1', '2020-05-31'),
-(81, '1', '4', '3', 'hr', '2', '2020-05-31');
+CREATE TABLE `data_pasangan` (
+  `id_pasangan` int(10) NOT NULL,
+  `id_kar` varchar(20) NOT NULL,
+  `nama_lengkap_pasangan` varchar(50) NOT NULL,
+  `nama_panggilan_pasangan` varchar(25) NOT NULL,
+  `tempat_pasangan` varchar(25) NOT NULL,
+  `ttl_pasangan` varchar(20) NOT NULL,
+  `no_ktp_pasangan` varchar(20) NOT NULL,
+  `alamat_saat_ini_pasangan` varchar(255) NOT NULL,
+  `pendidikan_pasangan` varchar(25) NOT NULL,
+  `telpon_pasangan` varchar(25) NOT NULL,
+  `agama_pasangan` varchar(25) NOT NULL,
+  `warganegra_pasangan` varchar(25) NOT NULL,
+  `suku_pasangan` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `data_pasangan`
+--
+
+INSERT INTO `data_pasangan` (`id_pasangan`, `id_kar`, `nama_lengkap_pasangan`, `nama_panggilan_pasangan`, `tempat_pasangan`, `ttl_pasangan`, `no_ktp_pasangan`, `alamat_saat_ini_pasangan`, `pendidikan_pasangan`, `telpon_pasangan`, `agama_pasangan`, `warganegra_pasangan`, `suku_pasangan`) VALUES
+(1, '1202005081', 'aluh ', 'aluh', 'tapin', '2020-06-20', '11111111111111', '', 'SMA/SMK/MA', '1212121212', 'Islam', 'ind', 'banjar'),
+(4, '2199806251', 'Mawar', 'Mawar', 'Suato Tatakan', '1997-12-01', '630504450970002', 'Tatakan', 'SMA/SMK/MA', '081377908415', 'Islam', 'Indonesia', 'Dayak'),
+(5, '1199503122', 'Laila Indriyani', 'Ila', 'Rantau', '1999-06-12', '630402260990002', 'Kupang, Rantau, Kalimantan Selatan', 'SMA/SMK/MA', '', 'Islam', 'Indonesia', 'Banjar'),
+(6, '3199607191', 'Eddy Bernandus', 'Eddy', 'Malang', '1990-04-17', '630502240900001', 'Banjarmasin', 'S2', '085543198720', 'Kristen', 'Indonesia', 'Batak');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `data_riwayat_pelatihan`
+--
+
+CREATE TABLE `data_riwayat_pelatihan` (
+  `id_pelatihan` int(10) NOT NULL,
+  `id_kar` varchar(20) NOT NULL,
+  `bidang` varchar(20) NOT NULL,
+  `penyelenggara` varchar(25) NOT NULL,
+  `periode` varchar(15) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `data_riwayat_pelatihan`
+--
+
+INSERT INTO `data_riwayat_pelatihan` (`id_pelatihan`, `id_kar`, `bidang`, `penyelenggara`, `periode`) VALUES
+(2, '1202005081', 'jaringan', 'bnsp', '2019'),
+(3, '2199806251', 'Komputer', 'BPNS', '2016'),
+(4, '1199503122', 'Mekanik', 'Balai Tenaga Kerja', '2019'),
+(5, '3199607191', 'Komputer', 'Kursus Kereta Kencana', '2016'),
+(6, '3199607191', 'Public Speaking', 'Seminar Katolik', '2017'),
+(7, '4199609131', 'Menjahit', 'Balai Desa Tatakan', '2015'),
+(8, '4199609131', 'Komputer', 'Balai Tenaga Kerja', '2019');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `developer`
+--
+
+CREATE TABLE `developer` (
+  `id_dev` int(10) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `level` enum('super_admin','','','') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `developer`
+--
+
+INSERT INTO `developer` (`id_dev`, `username`, `password`, `level`) VALUES
+(1, 'admin', 'd56b699830e77ba53855679cb1d252da', 'super_admin');
 
 -- --------------------------------------------------------
 
@@ -225,18 +318,12 @@ INSERT INTO `jabatan` (`id_jab`, `nama_jab`) VALUES
 
 CREATE TABLE `order_status` (
   `id_peg` int(11) NOT NULL,
-  `id_jab` varchar(255) NOT NULL,
+  `id_bidang` varchar(255) NOT NULL,
   `status` int(12) NOT NULL,
+  `user` varchar(50) NOT NULL,
   `tanggal` varchar(255) NOT NULL,
   `ket` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `order_status`
---
-
-INSERT INTO `order_status` (`id_peg`, `id_jab`, `status`, `tanggal`, `ket`) VALUES
-(1, '3', 1, '2020-05-31', '');
 
 -- --------------------------------------------------------
 
@@ -274,9 +361,62 @@ INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama_lengkap`, `nama_panggilan`, `j
 (10, '1001', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'banjarbaru', '1997-04-17', 'Tapin', 'Tapin', '085248665646', 'Islam', 1001, 'membaca', 'eddyyucca@gmail.com', '5', '2', 'Aktif', '2004-02-03', ''),
 (12, '666', 'indra', 'indra', 'Laki-Laki', 'tapin', '1997-12-04', 'tapin', 'tapin', '081250653005', 'Islam', 666, 'Jalan-Jalan', 'indra@gmail.com', '6', '2', 'Aktif', '2021-01-01', '');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pendidikan`
+--
+
+CREATE TABLE `pendidikan` (
+  `id_pen` int(10) NOT NULL,
+  `id_kar` varchar(50) NOT NULL,
+  `tingkat_pendidikan` varchar(50) NOT NULL,
+  `nama_sekolah` varchar(30) NOT NULL,
+  `nama_jurusan` varchar(25) NOT NULL,
+  `kota_pendidikan` varchar(50) NOT NULL,
+  `tahun_pendidikan` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `pendidikan`
+--
+
+INSERT INTO `pendidikan` (`id_pen`, `id_kar`, `tingkat_pendidikan`, `nama_sekolah`, `nama_jurusan`, `kota_pendidikan`, `tahun_pendidikan`) VALUES
+(2, '1202005081', 'TK', 'teka tadika mesra', '', 'tapin', '2018/2019'),
+(3, '1202005081', 'SD', 'SD rantau', '', 'rantau', '2018/2019'),
+(4, '1202005081', 'SMP/MTs', 'MTsN Tapin Selatan', 'Agama', 'Rantau', '2020/2021'),
+(5, '1202005081', 'S1', 'UNISKA', 'TEKNIK INFORMATIKA', 'BANJARBARU', '2022/2022'),
+(6, '1202005081', 'SMA/SMK/MA', 'SMKN 1 TAPIN SELATAN', 'TEKNIK KOMPUTER DAN JARIN', 'TAPIN', '2030/2032'),
+(8, '2199806251', 'TK', 'TK Kencana', '', 'Rantau', '2004'),
+(9, '2199806251', 'SD', 'SDN TATAKAN 1', '', 'Rantau', '2010'),
+(10, '2199806251', 'SMP/MTs', 'MTsN 5 Tapin', '', 'Rantau', '2013'),
+(11, '2199806251', 'SMA/SMK/MA', 'SMAN 1 Tapin', 'IPA', 'Rantau', '2016'),
+(12, '2199806251', 'S1', 'Universitas Lambung Mangkurat', 'Tenik Elektro', 'Banjarbaru', '2019'),
+(13, '1199503122', 'TK', 'TK Tunas Bangsa', '', 'Kotabaru', '2001'),
+(14, '1199503122', 'SD', 'SD Pelita Harapan', '', 'Kotabaru', '2007'),
+(15, '1199503122', 'SMP/MTs', 'SMPN 1 Kotabaru', '', 'Kotabaru', '2010'),
+(16, '1199503122', 'SMA/SMK/MA', 'SMAN 3 Kotabaru', 'IPS', 'Kotabaru', '2013'),
+(17, '1199503122', 'S1', 'Universitas Ahmad Yani', 'Pertambangan', 'Banjarbaru', '2018'),
+(18, '3199607191', 'TK', 'TK Bunda Maria', '', 'Banjarmasin', '2002'),
+(19, '3199607191', 'SD', 'SDN BANJARMASIN 2', '', 'Banjarmasin', '2008'),
+(20, '3199607191', 'SMP/MTs', 'SMPN 2 Banjarmasin', '', 'Banjarmasin', '2011'),
+(21, '3199607191', 'SMA/SMK/MA', 'SMAN 7 Banjarmasin', 'IPA', 'Banjarmasin', '2014'),
+(22, '3199607191', 'S1', 'Universitas Indonesia', 'Pertambangan', 'Jakarta', '2018'),
+(23, '4199609131', 'TK', 'TK Kencana', '', 'Rantau', '2002'),
+(24, '4199609131', 'SD', 'SDN TATAKAN 1', '', 'Rantau', '2008'),
+(25, '4199609131', 'SMP/MTs', 'MTsN 5 Tapin', '', 'Rantau', '2011'),
+(26, '4199609131', 'SMA/SMK/MA', 'SMKN 1 Tapin Selatan', 'Perkebunan', 'Rantau', '2014'),
+(27, '4199609131', 'S1', 'Universitas Lambung Mangkurat', 'Perkebunan', 'Banjarbaru', '2018');
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `absen`
+--
+ALTER TABLE `absen`
+  ADD PRIMARY KEY (`id_absen`);
 
 --
 -- Indeks untuk tabel `akun`
@@ -331,6 +471,12 @@ ALTER TABLE `pegawai`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `absen`
+--
+ALTER TABLE `absen`
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
@@ -358,7 +504,7 @@ ALTER TABLE `data_barang`
 -- AUTO_INCREMENT untuk tabel `data_order`
 --
 ALTER TABLE `data_order`
-  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT untuk tabel `jabatan`

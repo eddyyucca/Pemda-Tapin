@@ -18,6 +18,7 @@
                             <th>Nama Pegawai</th>
                             <th>Aksi</th>
                             <th>Level</th>
+                            <th>Absensi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,9 @@
                                         <a href="<?= base_url('admin/jadikan_admin/') . $x->nip; ?>" class="btn btn-primary">Jadikan Admin</a>
                                     <?php   }
                                     ?>
+                                </td>
+                                <td align="center">
+                                    <a href="<?= base_url('admin/absen/') . $x->nip; ?>" class="btn btn-success">Cek Absen</a>
                                 </td>
                             </tr>
                         <?php } ?>
