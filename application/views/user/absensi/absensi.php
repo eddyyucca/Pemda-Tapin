@@ -4,45 +4,63 @@
         <div class="card-header py-3">
             <a href="<?= base_url('user_karyawan/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
         </div>
+
         <div class="card-body">
             <div class="table-responsive">
-                <div class="container">
-                    <form action="<?= base_url('user/pengajuan_baru/') . $data->nip ?>" method="POST" enctype="multipart/form-data">
-                        <table class="table">
-                            <?= $pesan; ?>
-                            <?php if (validation_errors() == false) {
-                            } else { ?>
-                                <div class="alert alert-danger" role="alert">
-                                    <?= validation_errors() ?>
-                                </div>
-                            <?php } ?>
+                <?php if ($pesan == false) {
+                    # code...
+                } elseif ($pesan == "Anda Berhasil Absen Masuk") { ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= $pesan ?>
+                    </div>
+                <?php   } elseif ($pesan == "Anda Sudah Absen Masuk") { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $pesan ?>
+                    </div>
+                <?php   } elseif ($pesan == "Anda Berhasil Absen Pulang") { ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= $pesan ?>
+                    </div>
+                <?php   } elseif ($pesan == "Anda Sudah Absen Pulang") { ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= $pesan ?>
+                    </div>
+                <?php }   ?>
 
-                            <?php
-                            $waktu_asli = substr($waktu->date, 0, 4);
+                <form action="<?= base_url("user/absen_masuk") ?>" method="post">
+                    <input type="hidden" name="tipe" value="Jam Masuk">
+                    <button class="btn btn-primary btn-lg btn-block mb-1">Absen Masuk</button>
+                </form>
+                <form action="<?= base_url("user/absen_pulang") ?>" method="post">
+                    <input type="hidden" name="tipe" value="Jam Pulang">
+                    <button class="btn btn-secondary btn-lg btn-block mb-3">Absen Pulang</button>
+                </form>
 
-                            $waktu_tahun = $waktu_asli + 2;
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Jam</th>
+                            <th>Tanggal Absen</th>
+                            <th>tipe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $no = 1;
+                        foreach ($absen as $x) { ?>
 
-                            $waktu_sekarang = date('Y');
-                            if ($waktu_tahun <= $waktu_sekarang) { ?>
-                                <tr>
-                                    <td width=20%>Upload SK Terakhir</td>
-                                    <td><input type="file" name="file" class="form-control" placeholder="SK Terakhir" required></td>
-                                </tr>
 
-                            <?php } else { ?>
-                                <tr>
-                                    <td width=20%>Upload SK Terakhir</td>
-                                    <td><input type="file" name="file" class="form-control" placeholder="SK Terakhir" required disabled></td>
-                                </tr>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><?= $x->waktu ?></td>
+                                <td><?= $x->tanggal ?></td>
+                                <td><?= $x->tipe ?></td>
+
                             <?php  } ?>
-                            <td>
-                                <button class="btn btn-primary">Simpan</button>
-                            </td>
-                            <td></td>
                             </tr>
-                        </table>
-                    </form>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

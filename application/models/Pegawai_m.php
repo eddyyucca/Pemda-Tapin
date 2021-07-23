@@ -69,6 +69,22 @@ class Pegawai_m extends CI_Model
             return false;
         }
     }
+
+    public function data_absen($nip)
+    {
+        $this->db->where('id_peg', $nip);
+
+        $this->db->order_by('id_absen', 'DESC');
+        return $this->db->get('absen')->result();
+    }
+    public function cek_absen($nip, $tanggal, $tipe)
+    {
+        $this->db->where('id_peg', $nip);
+        $this->db->where('tanggal', $tanggal);
+        $this->db->where('tipe', $tipe);
+        $this->db->order_by('id_absen', 'DESC');
+        return $this->db->get('absen')->result();
+    }
 }
 
 /* End of file Pegawai_m.php */

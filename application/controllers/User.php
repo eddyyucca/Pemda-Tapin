@@ -376,26 +376,98 @@ class User extends CI_Controller
         $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
         $data['pesan'] = false;
         $data['keranjang'] = $this->cart->contents();
+        $data['absen'] = $this->pegawai_m->data_absen($nip);
         $this->load->view('template_user/header', $data);
         $this->load->view('user/absensi/absensi', $data);
         $this->load->view('template_user/footer');
     }
-    public function riwayat_absensi()
+
+    public function absen_masuk()
     {
-        $data['judul'] = 'Upload SK Terakhir';
-        $data['nama'] = $this->session->userdata('nama_lengkap');
-        $id_pegawai =  $this->session->userdata('id_pegawai');
-        $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
         $nip =  $this->session->userdata('nip');
-        $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
-        $data['pesan'] = false;
-        $data['keranjang'] = $this->cart->contents();
-        $this->load->view('template_user/header', $data);
-        $this->load->view('user/absensi/riwayat_absensi', $data);
-        $this->load->view('template_user/footer');
+        $tanggal = date("Y-m-d");
+        $tipe = $this->input->post('tipe');
+        $cek = $this->pegawai_m->cek_absen($nip, $tanggal, $tipe);
+        if ($cek == true) {
+            $data['pesan'] = "Anda Sudah Absen Masuk";
+            $data['judul'] = 'Upload SK Terakhir';
+            $data['nama'] = $this->session->userdata('nama_lengkap');
+            $id_pegawai =  $this->session->userdata('id_pegawai');
+            $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+            $nip =  $this->session->userdata('nip');
+            $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+            $data['keranjang'] = $this->cart->contents();
+            $data['absen'] = $this->pegawai_m->data_absen($nip);
+            $this->load->view('template_user/header', $data);
+            $this->load->view('user/absensi/absensi', $data);
+            $this->load->view('template_user/footer');
+        } elseif ($cek == false) {
+            $nip =  $this->session->userdata('nip');
+            $data = array(
+                "id_peg" => $nip,
+                "tanggal" => date("Y-m-d"),
+                "waktu" => date("H:i:s"),
+                "tipe" => $this->input->post('tipe'),
+            );
+            $this->db->insert('absen', $data);
+            $data['pesan'] = "Anda Berhasil Absen Masuk";
+            $data['judul'] = 'Upload SK Terakhir';
+            $data['nama'] = $this->session->userdata('nama_lengkap');
+            $id_pegawai =  $this->session->userdata('id_pegawai');
+            $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+            $nip =  $this->session->userdata('nip');
+            $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+
+            $data['keranjang'] = $this->cart->contents();
+            $data['absen'] = $this->pegawai_m->data_absen($nip);
+            $this->load->view('template_user/header', $data);
+            $this->load->view('user/absensi/absensi', $data);
+            $this->load->view('template_user/footer');
+        }
+    }
+    public function absen_pulang()
+    {
+        $nip =  $this->session->userdata('nip');
+        $tanggal = date("Y-m-d");
+        $tipe = $this->input->post('tipe');
+        $cek = $this->pegawai_m->cek_absen($nip, $tanggal, $tipe);
+        if ($cek == true) {
+            $data['pesan'] = "Anda Sudah Absen Pulang";
+            $data['judul'] = 'Upload SK Terakhir';
+            $data['nama'] = $this->session->userdata('nama_lengkap');
+            $id_pegawai =  $this->session->userdata('id_pegawai');
+            $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+            $nip =  $this->session->userdata('nip');
+            $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+
+            $data['keranjang'] = $this->cart->contents();
+            $data['absen'] = $this->pegawai_m->data_absen($nip);
+            $this->load->view('template_user/header', $data);
+            $this->load->view('user/absensi/absensi', $data);
+            $this->load->view('template_user/footer');
+        } elseif ($cek == false) {
+            $data = array(
+                "id_peg" => $nip,
+                "tanggal" => date("Y-m-d"),
+                "waktu" => date("H:i:s"),
+                "tipe" => $this->input->post('tipe'),
+            );
+            $this->db->insert('absen', $data);
+            $data['pesan'] = "Anda Berhasil Absen Pulang";
+            $data['judul'] = 'Upload SK Terakhir';
+            $data['nama'] = $this->session->userdata('nama_lengkap');
+            $id_pegawai =  $this->session->userdata('id_pegawai');
+            $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+            $nip =  $this->session->userdata('nip');
+            $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+
+            $data['keranjang'] = $this->cart->contents();
+            $data['absen'] = $this->pegawai_m->data_absen($nip);
+            $this->load->view('template_user/header', $data);
+            $this->load->view('user/absensi/absensi', $data);
+            $this->load->view('template_user/footer');
+        }
     }
 }   
-// end atk
-
 
 /* End of file User.php */
