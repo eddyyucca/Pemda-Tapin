@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-
+date_default_timezone_set("Asia/Makassar");
 class User extends CI_Controller
 {
     public function __construct()
@@ -388,8 +388,7 @@ class User extends CI_Controller
     {
         $nip =  $this->session->userdata('nip');
         $tanggal = date("Y-m-d");
-        $tipe = $this->input->post('tipe');
-        $cek = $this->pegawai_m->cek_absen($nip, $tanggal, $tipe);
+        $cek = $this->pegawai_m->cek_absen($nip, $tanggal);
         if ($cek == true) {
             $data['pesan'] = "Anda Sudah Absen Masuk";
             $data['judul'] = 'Upload SK Terakhir';
@@ -408,8 +407,8 @@ class User extends CI_Controller
             $data = array(
                 "id_peg" => $nip,
                 "tanggal" => date("Y-m-d"),
-                "waktu" => date("H:i:s"),
-                "tipe" => $this->input->post('tipe'),
+                "jam_masuk" => date("H:i:s"),
+                "jam_pulang" => "-",
             );
             $this->db->insert('absen', $data);
             $data['pesan'] = "Anda Berhasil Absen Masuk";
@@ -431,9 +430,8 @@ class User extends CI_Controller
     {
         $nip =  $this->session->userdata('nip');
         $tanggal = date("Y-m-d");
-        $tipe = $this->input->post('tipe');
-        $cek = $this->pegawai_m->cek_absen($nip, $tanggal, $tipe);
-        if ($cek == true) {
+        $cek = $this->pegawai_m->cek_absen($nip, $tanggal);
+        if ($cek == false) {
             $data['pesan'] = "Anda Sudah Absen Pulang";
             $data['judul'] = 'Upload SK Terakhir';
             $data['nama'] = $this->session->userdata('nama_lengkap');
@@ -447,14 +445,13 @@ class User extends CI_Controller
             $this->load->view('template_user/header', $data);
             $this->load->view('user/absensi/absensi', $data);
             $this->load->view('template_user/footer');
-        } elseif ($cek == false) {
+        } elseif ($cek == true) {
             $data = array(
-                "id_peg" => $nip,
-                "tanggal" => date("Y-m-d"),
-                "waktu" => date("H:i:s"),
-                "tipe" => $this->input->post('tipe'),
+                "jam_pulang" => date("H:i:s"),
             );
-            $this->db->insert('absen', $data);
+
+            $this->db->where('tanggal', $tanggal);
+            $this->db->update('absen', $data);
             $data['pesan'] = "Anda Berhasil Absen Pulang";
             $data['judul'] = 'Upload SK Terakhir';
             $data['nama'] = $this->session->userdata('nama_lengkap');

@@ -25,6 +25,8 @@ class Pegawai_m extends CI_Model
     public function get_all_pegawai()
     {
         $this->db->join('akun', 'akun.nip = pegawai.nip');
+        $this->db->join('jabatan', 'jabatan.id_jab = pegawai.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = pegawai.bidang');
         $this->db->order_by('id_pegawai', 'DESC');
         return $this->db->get('pegawai')->result();
     }
@@ -77,18 +79,29 @@ class Pegawai_m extends CI_Model
         $this->db->order_by('id_absen', 'DESC');
         return $this->db->get('absen')->result();
     }
-    public function cek_absen($nip, $tanggal, $tipe)
+    public function cek_absen($nip, $tanggal)
     {
         $this->db->where('id_peg', $nip);
         $this->db->where('tanggal', $tanggal);
-        $this->db->where('tipe', $tipe);
         $this->db->order_by('id_absen', 'DESC');
-        return $this->db->get('absen')->result();
+        return $this->db->get('absen')->row();
     }
     public function absen($id_peg)
     {
         $this->db->where('id_peg', $id_peg);
         return $this->db->get('absen')->result();
+    }
+
+    public function cari_bulan_absen($tahun, $bulan, $id_peg)
+    {
+
+        $this->db->select('*');
+        $this->db->from('absen as bulan');
+        $this->db->where('id_peg', $id_peg);
+        $this->db->where('YEAR(bulan.tanggal)', $tahun);
+        $this->db->where('MONTH(bulan.tanggal)', $bulan);
+        $query = $this->db->get();
+        return $query->result();
     }
 }
 

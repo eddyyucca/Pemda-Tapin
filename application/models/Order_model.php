@@ -135,6 +135,9 @@ class Order_model extends CI_Model
         return $query->result();
     }
 
+
+
+
     public function cari_departemen($data_cari)
     {
         $this->db->select('*');

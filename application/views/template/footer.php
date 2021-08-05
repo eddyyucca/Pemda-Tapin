@@ -152,7 +152,7 @@
            yAxes: [{
              ticks: {
                min: 0,
-               max: 100,
+               max: <?= $jml_pegawai ?>,
                maxTicksLimit: 5,
                padding: 10,
                // Include a dollar sign in the ticks

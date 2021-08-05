@@ -489,9 +489,23 @@ class Admin extends CI_Controller
         $tahun = date('Y');
         $data['judul'] = 'Absensi';
         $data['absen'] = $this->pegawai_m->absen($id_peg);
+        $data['id_peg'] = $id_peg;
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $this->load->view('template/header', $data);
         $this->load->view('admin/absen/view_absen', $data);
+        $this->load->view('template/footer');
+    }
+    public function view_absen_tanggal()
+    {
+        $id_peg = $this->input->post('id_peg');
+        $tahun =  $this->input->post('tahun');
+        $bulan = $this->input->post('bulan');
+        $data['judul'] = 'Absensi';
+        $data['absen'] = $this->pegawai_m->cari_bulan_absen($bulan, $tahun, $id_peg);
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $this->load->view('template/header', $data);
+        $this->load->view('admin/absen/view_absen_tanggal', $data);
         $this->load->view('template/footer');
     }
 }

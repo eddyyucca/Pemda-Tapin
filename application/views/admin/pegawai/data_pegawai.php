@@ -16,6 +16,8 @@
                             <th>No</th>
                             <th>NIP</th>
                             <th>Nama Pegawai</th>
+                            <th>Bidang</th>
+                            <th>Jabatan</th>
                             <th>Aksi</th>
                             <th>Level</th>
                             <th>Absensi</th>
@@ -29,6 +31,8 @@
                                 <td><?= $nomor++; ?></td>
                                 <td><?= $x->nip; ?></td>
                                 <td><?= $x->nama_lengkap; ?></td>
+                                <td><?= $x->nama_bidang; ?></td>
+                                <td><?= $x->nama_jab; ?></td>
                                 <td align="center">
                                     <a href="<?= base_url('admin/delete_pegawai/') . $x->nip; ?>" onclick="return confirm('Yakin Hapus?')" class="btn btn-danger">Hapus</a>
                                     <a href="<?= base_url('admin/update_pegawai/') . $x->id_pegawai; ?>" class="btn btn-primary">Edit</a>

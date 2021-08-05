@@ -14,7 +14,7 @@
                             Statistik Absensi
                         </div>
                         <div class="card-body"><canvas id="myBarChart" width="100%" height="100"></canvas></div>
-                        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+
                     </div>
                 </div>
                 <div class="row">

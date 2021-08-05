@@ -100,7 +100,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <a class="collapse-item" href="<?= base_url('user/atk') ?>">Pengajuan ATK</a>
               <a class="collapse-item" href="<?= base_url('user/keranjang') ?>">Keranjangn (<?php echo count($keranjang); ?>)</a>
-              <a class="collapse-item" href="<?= base_url('user/history_pengajuan') ?>">Riwayat Pengajuan</a>
+              <!-- <a class="collapse-item" href="<?= base_url('user/history_pengajuan') ?>">Riwayat Pengajuan</a> -->
               <a class="collapse-item" href="<?= base_url('user/status'); ?>">Status</a>
             </div>
           </div>
