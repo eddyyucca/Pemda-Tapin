@@ -4,7 +4,7 @@
         <div class="card shadow mb-4">
             <div class="card-header">
                 <div class="card-header">
-                    <a href="<?= base_url('user/atk/atk') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+                    <a href="<?= base_url('user/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
                 </div>
                 <div class="card-body">
                     <div class="row">

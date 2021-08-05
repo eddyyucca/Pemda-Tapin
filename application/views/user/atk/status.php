@@ -2,7 +2,7 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= base_url('user/atk/atk') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+            <a href="<?= base_url('user/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
         </div>
         <div class="card">
             <div class="card-body">
@@ -32,16 +32,16 @@
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $x->tanggal; ?></td>
                                                         <td><?php
-                                                                    if ($x->status == "4") {
-                                                                        echo "Ditolak";
-                                                                    } elseif ($x->status == "3") {
-                                                                        echo "Menunggu Disetujui";
-                                                                    } elseif ($x->status == "2") {
-                                                                        echo "Di Proses";
-                                                                    } elseif ($x->status == "1") {
-                                                                        echo "Selesai";
-                                                                    }
-                                                                    ?>
+                                                            if ($x->status == "4") {
+                                                                echo "Ditolak";
+                                                            } elseif ($x->status == "3") {
+                                                                echo "Menunggu Disetujui";
+                                                            } elseif ($x->status == "2") {
+                                                                echo "Di Proses";
+                                                            } elseif ($x->status == "1") {
+                                                                echo "Selesai";
+                                                            }
+                                                            ?>
                                                         </td>
                                                     </tr>
                                                 </tbody>

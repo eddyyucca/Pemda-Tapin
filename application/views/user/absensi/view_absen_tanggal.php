@@ -2,10 +2,10 @@
     <!-- Page Heading -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <a href="<?= base_url('admin/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+            <a href="<?= base_url('user/') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
         </div>
         <div class="card-body">
-            <form action="<?= base_url('admin/view_absen_tanggal') ?>" method="post">
+            <form action="<?= base_url('user/view_absen_tanggal') ?>" method="post">
                 <div class="input-group mb-3 col-6">
                     <input type="date" class="form-control" name="date1">
                     <input type="date" class="form-control" name="date2">

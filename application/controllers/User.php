@@ -467,6 +467,34 @@ class User extends CI_Controller
             $this->load->view('template_user/footer');
         }
     }
+
+    public function absen()
+    {
+        $id_peg  =  $this->session->userdata('nip');
+        $data['judul'] = 'Absensi';
+        $data['absen'] = $this->pegawai_m->absen($id_peg);
+        $data['id_peg'] = $id_peg;
+        $data['keranjang'] = $this->cart->contents();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/absensi/view_absen', $data);
+        $this->load->view('template_user/footer');
+    }
+    public function view_absen_tanggal()
+    {
+        $data['keranjang'] = $this->cart->contents();
+        $id_peg = $this->input->post('id_peg');
+        $data['id_peg'] = $id_peg;
+        $date1 =  $this->input->post('date1');
+        $date2 = $this->input->post('date2');
+        $data['judul'] = 'Absensi';
+        $data['absen'] = $this->pegawai_m->cari_bulan_absen($date1, $date2, $id_peg);
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $this->load->view('template_user/header', $data);
+        $this->load->view('user/absensi/view_absen_tanggal', $data);
+        $this->load->view('template_user/footer');
+    }
 }   
 
 /* End of file User.php */

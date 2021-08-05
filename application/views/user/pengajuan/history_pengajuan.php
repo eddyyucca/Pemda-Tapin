@@ -25,7 +25,12 @@
                                 <td><?= $x->date; ?></td>
                                 <td><?= $x->status_pengajuan; ?></td>
                                 <td>
-                                    <a href="<?= base_url('assets/file_pengajuan/' . $x->file) ?>" target="_blank" class="btn btn-primary">Cek Berkas</a>
+                                    <?php if ($x->file == false) { ?>
+
+                                    <?php   } elseif ($x->file == true) { ?>
+
+                                        <a href="<?= base_url('assets/file_pengajuan/' . $x->file) ?>" target="_blank" class="btn btn-primary">Cek Berkas</a>
+                                    <?php  } ?>
                                 </td>
                             </tr>
                         <?php } ?>

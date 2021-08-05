@@ -75,7 +75,6 @@ class Pegawai_m extends CI_Model
     public function data_absen($nip)
     {
         $this->db->where('id_peg', $nip);
-
         $this->db->order_by('id_absen', 'DESC');
         return $this->db->get('absen')->result();
     }
@@ -89,17 +88,18 @@ class Pegawai_m extends CI_Model
     public function absen($id_peg)
     {
         $this->db->where('id_peg', $id_peg);
+        $this->db->order_by('id_absen', 'DESC');
         return $this->db->get('absen')->result();
     }
 
-    public function cari_bulan_absen($tahun, $bulan, $id_peg)
+    public function cari_bulan_absen($date1, $date2, $id_peg)
     {
-
         $this->db->select('*');
-        $this->db->from('absen as bulan');
+        $this->db->from('absen');
         $this->db->where('id_peg', $id_peg);
-        $this->db->where('YEAR(bulan.tanggal)', $tahun);
-        $this->db->where('MONTH(bulan.tanggal)', $bulan);
+        $this->db->where('tanggal >=', $date1);
+        $this->db->where('tanggal <=', $date2);
+        $this->db->order_by('id_absen', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }

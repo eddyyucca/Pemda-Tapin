@@ -486,7 +486,7 @@ class Admin extends CI_Controller
     //end menerima pengajuan
     public function absen($id_peg)
     {
-        $tahun = date('Y');
+
         $data['judul'] = 'Absensi';
         $data['absen'] = $this->pegawai_m->absen($id_peg);
         $data['id_peg'] = $id_peg;
@@ -498,10 +498,11 @@ class Admin extends CI_Controller
     public function view_absen_tanggal()
     {
         $id_peg = $this->input->post('id_peg');
-        $tahun =  $this->input->post('tahun');
-        $bulan = $this->input->post('bulan');
+        $data['id_peg'] = $id_peg;
+        $date1 =  $this->input->post('date1');
+        $date2 = $this->input->post('date2');
         $data['judul'] = 'Absensi';
-        $data['absen'] = $this->pegawai_m->cari_bulan_absen($bulan, $tahun, $id_peg);
+        $data['absen'] = $this->pegawai_m->cari_bulan_absen($date1, $date2, $id_peg);
 
         $data['nama'] = $this->session->userdata('nama_lengkap');
         $this->load->view('template/header', $data);
