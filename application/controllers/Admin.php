@@ -28,10 +28,25 @@ class Admin extends CI_Controller
 
         $data['jml_pegawai'] = $this->pegawai_m->jumlah_pegawai();
         $data['jml_bidang'] = $this->pegawai_m->jumlah_bidang();
+        $data['jml_absen'] = $this->pegawai_m->jumlah_absen();
+        $bulan1 = "1";
+        $bulan = "08";
+        $data['bulan1'] = $this->pegawai_m->jumlah_absen_bulan("01");
+        $data['bulan2'] = $this->pegawai_m->jumlah_absen_bulan("02");
+        $data['bulan3'] = $this->pegawai_m->jumlah_absen_bulan("03");
+        $data['bulan4'] = $this->pegawai_m->jumlah_absen_bulan("04");
+        $data['bulan5'] = $this->pegawai_m->jumlah_absen_bulan("05");
+        $data['bulan6'] = $this->pegawai_m->jumlah_absen_bulan("06");
+        $data['bulan7'] = $this->pegawai_m->jumlah_absen_bulan("07");
+        $data['bulan8'] = $this->pegawai_m->jumlah_absen_bulan("08");
+        $data['bulan9'] = $this->pegawai_m->jumlah_absen_bulan("09");
+        $data['bulan10'] = $this->pegawai_m->jumlah_absen_bulan("10");
+        $data['bulan11'] = $this->pegawai_m->jumlah_absen_bulan("11");
+        $data['bulan12'] = $this->pegawai_m->jumlah_absen_bulan("12");
 
         $this->load->view('template/header', $data);
         $this->load->view('admin/index', $data);
-        $this->load->view('template/footer');
+        $this->load->view('template/footer', $data);
     }
     // jabatan
     // -------------------- //

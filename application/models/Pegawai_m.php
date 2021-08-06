@@ -12,6 +12,28 @@ class Pegawai_m extends CI_Model
             return 0;
         }
     }
+    public function jumlah_absen()
+    {
+        $query = $this->db->get('absen');
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
+
+    public function jumlah_absen_bulan($bulan)
+    {
+        $this->db->select('*');
+        $this->db->from('absen');
+        $this->db->where('MONTH(absen.tanggal)', $bulan);
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->num_rows();
+        } else {
+            return 0;
+        }
+    }
 
     public function jumlah_bidang()
     {

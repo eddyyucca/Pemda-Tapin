@@ -122,7 +122,8 @@
            backgroundColor: "#4e73df",
            hoverBackgroundColor: "#2e59d9",
            borderColor: "#4e73df",
-           data: [12, 11, 14, 13, 2, 33, 21, 5, 6, 77, 66, 42],
+
+           data: [<?= $bulan1 ?>, <?= $bulan2 ?>, <?= $bulan3 ?>, <?= $bulan4 ?>, <?= $bulan5 ?>, <?= $bulan6 ?>, <?= $bulan7 ?>, <?= $bulan8 ?>, <?= $bulan9 ?>, <?= $bulan10 ?>, <?= $bulan11 ?>, <?= $bulan12 ?>],
          }],
        },
        options: {
@@ -152,7 +153,7 @@
            yAxes: [{
              ticks: {
                min: 0,
-               max: <?= $jml_pegawai ?>,
+               max: <?= $jml_absen ?>,
                maxTicksLimit: 5,
                padding: 10,
                // Include a dollar sign in the ticks
