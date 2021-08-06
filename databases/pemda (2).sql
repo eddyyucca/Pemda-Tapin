@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Jul 2021 pada 15.38
+-- Waktu pembuatan: 06 Agu 2021 pada 02.05
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 8.0.3
 
@@ -31,17 +31,17 @@ CREATE TABLE `absen` (
   `id_absen` int(11) NOT NULL,
   `id_peg` varchar(100) NOT NULL,
   `tanggal` varchar(25) NOT NULL,
-  `waktu` varchar(50) NOT NULL,
-  `tipe` varchar(50) NOT NULL
+  `jam_masuk` varchar(100) NOT NULL,
+  `jam_pulang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `absen`
 --
 
-INSERT INTO `absen` (`id_absen`, `id_peg`, `tanggal`, `waktu`, `tipe`) VALUES
-(12, '1001', '2021-07-23', '02:24:25', 'Jam Masuk'),
-(13, '1001', '2021-07-23', '02:24:28', 'Jam Pulang');
+INSERT INTO `absen` (`id_absen`, `id_peg`, `tanggal`, `jam_masuk`, `jam_pulang`) VALUES
+(18, '1001', '2021-08-04', '08:14:50', '19:23:49'),
+(19, '1001', '2021-08-06', '00:55:25', '00:55:26');
 
 -- --------------------------------------------------------
 
@@ -62,7 +62,8 @@ CREATE TABLE `akun` (
 
 INSERT INTO `akun` (`id_akun`, `nip`, `password`, `level`) VALUES
 (12, '1001', 'fae0b27c451c728867a567e8c1bb4e53', 'user'),
-(14, '666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin');
+(14, '666', 'fae0b27c451c728867a567e8c1bb4e53', 'admin'),
+(15, '1', 'c4ca4238a0b923820dcc509a6f75849b', 'user');
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,11 @@ CREATE TABLE `berkas` (
 --
 
 INSERT INTO `berkas` (`id_berkas`, `nip`, `file`, `date`, `status_pengajuan`) VALUES
-(7, '666', '', '2021-01-01', 'Diterima');
+(7, '666', '', '2021-01-01', 'Diterima'),
+(8, '1', '', '2019-11-11', 'Diterima'),
+(9, '1001', '', '2019-11-11', 'Diterima'),
+(11, '1001', 'cv_fauziah.pdf', '2021-08-06', 'Ditolak'),
+(12, '1001', 'cetak.pdf', '2021-08-06', 'Diterima');
 
 -- --------------------------------------------------------
 
@@ -121,7 +126,7 @@ CREATE TABLE `data_barang` (
 --
 
 INSERT INTO `data_barang` (`id`, `item`, `qty`, `satuan`) VALUES
-(1, 'Amplop Coklat C3', '4', 'Pack'),
+(1, 'Amplop Coklat C3', '0', 'Pack'),
 (2, 'Amplop Coklat D (folio) Samson', '3', 'Pack'),
 (3, 'Amplop jaya 95x152mm', '11', 'Pack'),
 (4, 'Amplop Surat Putih (110 x 230 mm)', '1', 'Pack'),
@@ -210,6 +215,13 @@ CREATE TABLE `data_order` (
   `qty_order` varchar(255) NOT NULL,
   `tanggal` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `data_order`
+--
+
+INSERT INTO `data_order` (`id_order`, `id_keranjang`, `id_barang`, `id_bidang`, `user_id`, `qty_order`, `tanggal`) VALUES
+(93, '1', '1', '2', 'eddy adha saputra', '4', '2021-08-06');
 
 -- --------------------------------------------------------
 
@@ -325,6 +337,13 @@ CREATE TABLE `order_status` (
   `ket` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `order_status`
+--
+
+INSERT INTO `order_status` (`id_peg`, `id_bidang`, `status`, `user`, `tanggal`, `ket`) VALUES
+(1, '2', 1, 'eddy adha saputra', '2021-08-06', '');
+
 -- --------------------------------------------------------
 
 --
@@ -359,7 +378,8 @@ CREATE TABLE `pegawai` (
 
 INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama_lengkap`, `nama_panggilan`, `jk`, `tempat`, `ttl`, `alamat_saat_ini`, `alamat_permanen`, `no_telp`, `agama`, `no_ktp`, `hobi`, `email`, `jabatan`, `bidang`, `status_pegawai`, `mulai_bekerja`, `foto`) VALUES
 (10, '1001', 'eddy adha saputra', 'eddy', 'Laki-Laki', 'banjarbaru', '1997-04-17', 'Tapin', 'Tapin', '085248665646', 'Islam', 1001, 'membaca', 'eddyyucca@gmail.com', '5', '2', 'Aktif', '2004-02-03', ''),
-(12, '666', 'indra', 'indra', 'Laki-Laki', 'tapin', '1997-12-04', 'tapin', 'tapin', '081250653005', 'Islam', 666, 'Jalan-Jalan', 'indra@gmail.com', '6', '2', 'Aktif', '2021-01-01', '');
+(12, '666', 'indra', 'indra', 'Laki-Laki', 'tapin', '1997-12-04', 'tapin', 'tapin', '081250653005', 'Islam', 666, 'Jalan-Jalan', 'indra@gmail.com', '6', '2', 'Aktif', '2021-01-01', ''),
+(13, '1', 'juli arlianto', 'juli arlianto', 'Laki-Laki', 'banjarbaru', '1998-11-11', 'Banjar Baru Selatan', 'JL. pandu, guntung paikat, kost berkat utama no 67', '085248665646', 'Islam', 2147483647, 'membaca', 'eddyyucca2@gmail.com', '5', '2', 'Aktif', '2019-11-11', 'WhatsApp_Image_2021-07-31_at_09_31_25.jpeg');
 
 -- --------------------------------------------------------
 
@@ -474,19 +494,19 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT untuk tabel `absen`
 --
 ALTER TABLE `absen`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT untuk tabel `akun`
 --
 ALTER TABLE `akun`
-  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_akun` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `berkas`
 --
 ALTER TABLE `berkas`
-  MODIFY `id_berkas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_berkas` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `bidang`
@@ -504,7 +524,7 @@ ALTER TABLE `data_barang`
 -- AUTO_INCREMENT untuk tabel `data_order`
 --
 ALTER TABLE `data_order`
-  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_order` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT untuk tabel `jabatan`
@@ -522,7 +542,7 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_pegawai` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
