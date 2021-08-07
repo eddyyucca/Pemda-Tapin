@@ -8,7 +8,7 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= base_url('order/cari') ?>" method="post">
+                    <form action="<?= base_url('order/order_selesai') ?>" method="post">
                         <div class="input-group mb-3 col-6">
                             <input type="date" class="form-control" name="tanggal">
                             <div class="input-group-append">

@@ -4,7 +4,7 @@
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header">
-                <a href="<?= base_url('order') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
+                <a href="<?= base_url('order_barang') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
             </div>
             <div class="card">
                 <div class="card-body">
@@ -20,7 +20,6 @@
                                                 <th>QTY</th>
                                                 <th>SATUAN</th>
                                                 <th>TANGGAL</th>
-                                                <th>Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -40,10 +39,7 @@
                                                             <td><?= $x->qty_order ?></td>
                                                             <td><?= $x->satuan ?></td>
                                                             <td><?= $x->tanggal ?></td>
-                                                            <td>
-                                                                <a href="<?= base_url('order_barang/edit/') . $x->id_order ?>"><i class="btn btn-primary"> Edit</i></a>
-                                                                <a href="<?= base_url('order_barang/hapus/') . $x->id_order ?>" onclick="return confirm('Yakin Hapus?')"><i class="btn btn-danger"> Hapus</i></a>
-                                                            </td>
+
                                                         </tr>
                                         </tbody>
                                     <?php } ?>

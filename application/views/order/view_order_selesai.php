@@ -4,7 +4,6 @@
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header">
-                <a href="<?= base_url('order') ?>"><i class="fas fa-arrow-circle-left"> Kembali</i></a>
             </div>
             <div class="card">
                 <div class="card-body">

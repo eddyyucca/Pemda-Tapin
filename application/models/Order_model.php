@@ -43,7 +43,7 @@ class Order_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('order_status');
-        $this->db->join('bidang', 'bidang.id_bidang = order_status.bidang');
+        $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
         $this->db->where('status', 1);
 
         $this->db->like('tanggal', $cari);
