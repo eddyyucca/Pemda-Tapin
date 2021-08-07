@@ -37,7 +37,8 @@
                             <tr>
                                 <td>Tempat/Tanggal/Lahir</td>
                                 <td><input type="text" name="tempat" class="form-control" required placeholder="Tempat">
-                                    <input type="date" name="ttl" class="form-control"></td>
+                                    <input type="date" name="ttl" class="form-control">
+                                </td>
                             </tr>
                             <tr>
                                 <td>Alamat Saat Ini</td>
@@ -103,7 +104,7 @@
                                         </div>
                                     </div>
                                     <div class="ml-2 col-sm-6">
-                                        <img src="https://placehold.it/80x80" width="100" height="100" id="preview" class="img-thumbnail">
+                                        <img src="<?= base_url("assets/images/default.png") ?>" width="100" height="100" id="preview" class="img-thumbnail">
                                     </div>
                                 </td>
                             </tr>
