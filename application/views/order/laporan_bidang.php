@@ -23,6 +23,12 @@
                             </div>
                         </div>
                     </form>
+                    <form action="<?= base_url('order/cetak_laporan_bidang') ?>" method="post">
+                        <input type="hidden" name="cari_bidang" value="<?= $cari_bidang ?>">
+                        <div class="form-group ml-2">
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Cetak</button>
+                        </div>
+                    </form>
                     <hr>
                     <div class="row">
                         <div class="table-responsive">

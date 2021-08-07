@@ -8,6 +8,7 @@
             <div class="table-responsive">
                 <div class="container">
                     <a href="<?= base_url('admin/tambah_pegawai_baru') ?>" class="btn btn-primary">Tambah Pegawai Baru</a>
+                    <a href="<?= base_url('admin/cetak_pegawai') ?>" class="btn btn-primary">Cetak Data Pegawai</a>
                     <hr>
                 </div>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

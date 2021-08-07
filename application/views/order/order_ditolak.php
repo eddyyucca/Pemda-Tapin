@@ -8,7 +8,11 @@
             </div>
             <div class="card">
                 <div class="card-body">
+                    <a href="<?= base_url('order/cetak_order_ditolak') ?>" class="btn btn-primary">Cetak</a>
+                    <br>
+                    <hr>
                     <div class="row">
+
                         <div class="table-responsive">
                             <div class="container">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -214,6 +214,16 @@ class Admin extends CI_Controller
         $this->load->view('admin/pegawai/data_pegawai', $data);
         $this->load->view('template/footer');
     }
+    public function cetak_pegawai()
+    {
+        $data['judul'] = 'Data Pegawai';
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        $data['data'] = $this->pegawai_m->get_all_pegawai();
+
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/pegawai/cetak_data_pegawai', $data);
+        // $this->load->view('template/footer');
+    }
 
 
     public function tambah_pegawai_baru()
@@ -439,6 +449,15 @@ class Admin extends CI_Controller
         $this->load->view('admin/pengajuan/pengajuan_ditolak', $data);
         $this->load->view('template/footer');
     }
+    public function cetak_semua_pengajuan_ditolak()
+    {
+        $data['judul'] = 'Data Pengajuan Ditolak';
+        $data['data'] = $this->pengajuan_m->get_all_pengajuan_ditolak();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/pengajuan/cetak_pengajuan_ditolak', $data);
+        // $this->load->view('template/footer');
+    }
     public function semua_pengajuan_diterima()
     {
         $data['judul'] = 'Data Pengajuan Ditolak';
@@ -447,6 +466,15 @@ class Admin extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('admin/pengajuan/pengajuan_diterima', $data);
         $this->load->view('template/footer');
+    }
+    public function cetak_semua_pengajuan_diterima()
+    {
+        $data['judul'] = 'Data Pengajuan Ditolak';
+        $data['data'] = $this->pengajuan_m->get_all_pengajuan_diterima();
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/pengajuan/cetak_pengajuan_diterima', $data);
+        // $this->load->view('template/footer');
     }
     public function pengajuan_tahun()
     {
@@ -516,6 +544,10 @@ class Admin extends CI_Controller
         $data['id_peg'] = $id_peg;
         $date1 =  $this->input->post('date1');
         $date2 = $this->input->post('date2');
+        $data['id_peg'] = $this->input->post('id_peg');
+        $data['date1'] =  $this->input->post('date1');
+        $data['date2'] = $this->input->post('date2');
+
         $data['judul'] = 'Absensi';
         $data['absen'] = $this->pegawai_m->cari_bulan_absen($date1, $date2, $id_peg);
 
@@ -523,6 +555,25 @@ class Admin extends CI_Controller
         $this->load->view('template/header', $data);
         $this->load->view('admin/absen/view_absen_tanggal', $data);
         $this->load->view('template/footer');
+    }
+    public function cetak_view_absen_tanggal()
+    {
+        $id_peg = $this->input->post('id_peg');
+        $id_pegawai = $this->input->post('id_peg');
+        $date1 =  $this->input->post('date1');
+        $date2 = $this->input->post('date2');
+        $data['id_peg'] = $this->input->post('id_peg');
+        $data['id_peg'] = $this->input->post('id_peg');
+        $data['date1'] =  $this->input->post('date1');
+        $data['date2'] = $this->input->post('date2');
+        $data['data_peg'] = $this->pegawai_m->get_row_pegawai_nip($id_pegawai);
+        $data['judul'] = 'Absensi';
+        $data['absen'] = $this->pegawai_m->cari_bulan_absen($date1, $date2, $id_peg);
+
+        $data['nama'] = $this->session->userdata('nama_lengkap');
+        // $this->load->view('template/header', $data);
+        $this->load->view('admin/absen/cetak_view_absen_tanggal', $data);
+        // $this->load->view('template/footer');
     }
 }
 

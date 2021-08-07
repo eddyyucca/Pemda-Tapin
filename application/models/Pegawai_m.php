@@ -60,6 +60,14 @@ class Pegawai_m extends CI_Model
 
         return $this->db->get('pegawai')->row();
     }
+    public function get_row_pegawai_nip($nip)
+    {
+        $this->db->where('nip', $nip);
+        $this->db->join('jabatan', 'jabatan.id_jab = pegawai.jabatan');
+        $this->db->join('bidang', 'bidang.id_bidang = pegawai.bidang');
+
+        return $this->db->get('pegawai')->row();
+    }
 
     public function get_row_pegawai2($id_pegawai)
     {

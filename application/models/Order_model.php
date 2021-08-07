@@ -15,12 +15,13 @@ class Order_model extends CI_Model
         return $query->result();
     }
 
-    public function order_selesai()
+    public function order_selesai($tanggal)
     {
         $this->db->select('*');
         $this->db->from('order_status');
         $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
         $this->db->where('status', 1);
+        $this->db->where('tanggal', $tanggal);
 
         $query = $this->db->get();
 
