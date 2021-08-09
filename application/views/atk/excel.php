@@ -4,11 +4,12 @@ $date = date('Y-m-d');
 header("Content-Disposition: attachment; filename=Data Barang $date.xls");
 ?>
 <table border="1">
-
     <tr align="center" width="400">
-        <td colspan="4">PEMDA TAPIN</td>
+        <td colspan="4"><img src="<?= base_url('assets/cop.png') ?>" width="90%"></td>
     </tr>
-
+    <tr>
+        <td><br><br><br><br><br><br><br></td>
+    </tr>
     <tr align="center">
         <td colspan="4">
             <h2>DATA ATK</h2>
