@@ -115,6 +115,13 @@ class Pegawai_m extends CI_Model
         $this->db->order_by('id_absen', 'DESC');
         return $this->db->get('absen')->row();
     }
+    public function cek_absen_pulang($nip, $tanggal)
+    {
+        $this->db->where('id_peg', $nip);
+        $this->db->where('tanggal', $tanggal);
+        $this->db->order_by('id_absen', 'DESC');
+        return $this->db->get('absen')->result();
+    }
     public function absen($id_peg)
     {
         $this->db->where('id_peg', $id_peg);

@@ -12,6 +12,7 @@
                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
                         Print Excel
                     </button>
+                    <a href="<?= base_url('atk/cetak_atk') ?>" class="btn btn-success">Print PDF</a>
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered" role="document">

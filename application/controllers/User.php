@@ -431,6 +431,8 @@ class User extends CI_Controller
         $nip =  $this->session->userdata('nip');
         $tanggal = date("Y-m-d");
         $cek = $this->pegawai_m->cek_absen($nip, $tanggal);
+        $cek2 = $this->pegawai_m->cek_absen_pulang($nip, $tanggal);
+
         if ($cek == false) {
             $data['pesan'] = "Anda Sudah Absen Pulang";
             $data['judul'] = 'Upload SK Terakhir';
@@ -446,25 +448,44 @@ class User extends CI_Controller
             $this->load->view('user/absensi/absensi', $data);
             $this->load->view('template_user/footer');
         } elseif ($cek == true) {
-            $data = array(
-                "jam_pulang" => date("H:i:s"),
-            );
+            foreach ($cek2 as $x) {
 
-            $this->db->where('tanggal', $tanggal);
-            $this->db->update('absen', $data);
-            $data['pesan'] = "Anda Berhasil Absen Pulang";
-            $data['judul'] = 'Upload SK Terakhir';
-            $data['nama'] = $this->session->userdata('nama_lengkap');
-            $id_pegawai =  $this->session->userdata('id_pegawai');
-            $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
-            $nip =  $this->session->userdata('nip');
-            $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+                if ($x->jam_pulang == "-") {
+                    $data = array(
+                        "jam_pulang" => date("H:i:s"),
+                    );
+                    $this->db->where('tanggal', $tanggal);
+                    $this->db->update('absen', $data);
+                    $data['pesan'] = "Anda Berhasil Absen Pulang";
+                    $data['judul'] = 'Upload SK Terakhir';
+                    $data['nama'] = $this->session->userdata('nama_lengkap');
+                    $id_pegawai =  $this->session->userdata('id_pegawai');
+                    $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+                    $nip =  $this->session->userdata('nip');
+                    $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
 
-            $data['keranjang'] = $this->cart->contents();
-            $data['absen'] = $this->pegawai_m->data_absen($nip);
-            $this->load->view('template_user/header', $data);
-            $this->load->view('user/absensi/absensi', $data);
-            $this->load->view('template_user/footer');
+                    $data['keranjang'] = $this->cart->contents();
+                    $data['absen'] = $this->pegawai_m->data_absen($nip);
+                    $this->load->view('template_user/header', $data);
+                    $this->load->view('user/absensi/absensi', $data);
+                    $this->load->view('template_user/footer');
+                } else {
+
+                    $data['pesan'] = "Anda Sudah Absen Pulang";
+                    $data['judul'] = 'Upload SK Terakhir';
+                    $data['nama'] = $this->session->userdata('nama_lengkap');
+                    $id_pegawai =  $this->session->userdata('id_pegawai');
+                    $data['data'] = $this->pegawai_m->get_row_pegawai($id_pegawai);
+                    $nip =  $this->session->userdata('nip');
+                    $data['waktu'] = $this->pengajuan_m->cek_pengajuan($nip);
+
+                    $data['keranjang'] = $this->cart->contents();
+                    $data['absen'] = $this->pegawai_m->data_absen($nip);
+                    $this->load->view('template_user/header', $data);
+                    $this->load->view('user/absensi/absensi', $data);
+                    $this->load->view('template_user/footer');
+                }
+            }
         }
     }
 

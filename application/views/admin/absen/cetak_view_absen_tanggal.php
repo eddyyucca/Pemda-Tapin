@@ -4,6 +4,14 @@
         <div class="card-header py-3">
 
         </div>
+        <table>
+            <tr align="left">
+                <th rowspan="2"><img src="<?= base_url('assets/cop.png') ?>" width="100%">
+                </th>
+            </tr>
+        </table>
+        <br>
+        <hr>
         <div class="card-body">
             Absen <?= $data_peg->nama_lengkap ?>
             <hr>

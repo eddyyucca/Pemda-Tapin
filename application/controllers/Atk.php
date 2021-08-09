@@ -113,6 +113,19 @@ class Atk extends CI_Controller
         $this->load->view('atk/view_data', $data);
         $this->load->view('template/footer');
     }
+    public function cetak_atk()
+    {
+        $data['judul'] = 'Tabel Data ATK';
+        // $data['alerts'] = $this->order_model->getDataJoin();
+        // $data['alerts_3'] = $this->order_model->alerts_3();
+        $data['nama'] = $this->session->userdata('nama_user');
+        $data['data'] = $this->atk_model->getDataBarang();
+        $data['level_akun'] = $this->session->userdata('level');
+
+        // $this->load->view('template/header', $data);
+        $this->load->view('atk/cetak_view_data', $data);
+        // $this->load->view('template/footer');
+    }
 
     public function edit($id)
     {

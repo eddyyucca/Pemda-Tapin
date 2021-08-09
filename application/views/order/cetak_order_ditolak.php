@@ -4,13 +4,21 @@
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header">
-                Order Ditolak
+
             </div>
             <div class="card">
                 <div class="card-body">
                     <div class="row">
                         <div class="table-responsive">
                             <div class="container">
+                                <table>
+                                    <tr align="left">
+                                        <th rowspan="2"><img src="<?= base_url('assets/cop.png') ?>" width="100%">
+                                        </th>
+                                    </tr>
+                                </table>
+                                <br>
+                                <hr>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border="1">
                                     <div class="container">
                                         <thead>
