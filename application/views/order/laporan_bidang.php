@@ -11,7 +11,7 @@
                     <form action="<?= base_url('order/laporan_bidang') ?>" method="post">
                         <div class="input-group mb-3 col-6">
                             <div class="form-group mr-1">
-                                <select name="laporan_dep" class="custom-select">
+                                <select name="cari_bidang" class="custom-select">
                                     <option value="">--PILIH BIDANG--</option>
                                     <?php foreach ($data_bidang as $x) : ?>
                                         <option value="<?= $x->id_bidang; ?>"><?= $x->nama_bidang; ?></option>

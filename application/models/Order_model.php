@@ -135,6 +135,17 @@ class Order_model extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+    public function cari_bulan_ditolak($tahun, $bulan)
+    {
+        $this->db->select('*');
+        $this->db->from('order_status as bulan');
+        $this->db->join('bidang', 'bidang.id_bidang = bulan.id_bidang');
+        $this->db->where('YEAR(bulan.tanggal)', $tahun);
+        $this->db->where('MONTH(bulan.tanggal)', $bulan);
+        $this->db->where('status', "4");
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 
 
@@ -144,7 +155,7 @@ class Order_model extends CI_Model
         $this->db->select('*');
         $this->db->from('order_status');
         $this->db->join('bidang', 'bidang.id_bidang = order_status.id_bidang');
-        // $this->db->where('id_bidang', $data_cari);
+        $this->db->where('order_status.id_bidang', $data_cari);
         // $this->db->like('bidang', $data_cari);
         $query = $this->db->get();
         return $query->result();

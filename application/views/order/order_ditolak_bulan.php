@@ -4,19 +4,11 @@
     <div class="card-body">
         <div class="card shadow mb-4">
             <div class="card-header">
-                Order Selesai
+                Order Ditolak
             </div>
             <div class="card">
                 <div class="card-body">
-                    <form action="<?= base_url('order/order_selesai') ?>" method="post">
-                        <div class="input-group mb-3 col-6">
-                            <input type="date" class="form-control" name="tanggal">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
-                            </div>
-                        </div>
-                    </form>
-                    <form action="<?= base_url('order/order_selesai_bulan') ?>" method="post">
+                    <form action="<?= base_url('order/order_ditolak_bulan') ?>" method="post">
                         <div class="input-group mb-3 col-6">
                             <div class="form-group mr-1">
                                 <select name="bulan" id="" class="custom-select">
@@ -43,14 +35,17 @@
                             </div>
                         </div>
                     </form>
-                    <form action="<?= base_url('order/cetak_order_selesai') ?>" method="post">
-                        <input type="hidden" name="tanggal" value="<?= $tanggal ?>">
+                    <form action="<?= base_url('order/cetak_order_ditolak_bulan') ?>" method="post">
+                        <input type="hidden" name="bulan" value="<?= $bulan ?>">
+                        <input type="hidden" name="tahun" value="<?= $tahun ?>">
                         <div class="form-group ml-2">
                             <button class="btn btn-primary" type="submit" id="button-addon2">Cetak</button>
                         </div>
                     </form>
+                    <br>
                     <hr>
                     <div class="row">
+
                         <div class="table-responsive">
                             <div class="container">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

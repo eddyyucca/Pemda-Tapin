@@ -43,8 +43,9 @@
                             </div>
                         </div>
                     </form>
-                    <form action="<?= base_url('order/cetak_order_selesai') ?>" method="post">
-                        <input type="hidden" name="tanggal" value="<?= $tanggal ?>">
+                    <form action="<?= base_url('order/cetak_laporan_bulanan') ?>" method="post">
+                        <input type="hidden" name="bulan" value="<?= $bulan ?>">
+                        <input type="hidden" name="tahun" value="<?= $tahun ?>">
                         <div class="form-group ml-2">
                             <button class="btn btn-primary" type="submit" id="button-addon2">Cetak</button>
                         </div>
