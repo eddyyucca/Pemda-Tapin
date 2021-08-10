@@ -320,11 +320,6 @@ class Order extends CI_Controller
     public function laporan_bidang()
     {
         $data_cari = $this->input->post('cari_bidang');
-        if ($data_cari == false) {
-            $data_cari = "1";
-        } else {
-            $data_cari = $this->input->post('cari_bidang');
-        }
         $data['cari_bidang'] = $this->input->post('cari_bidang');
         $data['judul'] = 'laporan order departemen';
         $data['alerts'] = $this->order_model->getDataJoin();
@@ -340,7 +335,7 @@ class Order extends CI_Controller
     }
     public function cetak_laporan_bidang()
     {
-        $data_cari = $this->input->post('laporan_bidang');
+        $data_cari = $this->input->post('cari_bidang');
         $data['cari_bidang'] = $this->input->post('laporan_bidang');
         $data['judul'] = 'laporan order departemen';
         $data['alerts'] = $this->order_model->getDataJoin();

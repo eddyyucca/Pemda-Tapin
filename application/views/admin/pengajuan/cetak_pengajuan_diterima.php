@@ -44,6 +44,14 @@
                         } ?>
                     </tbody>
                 </table>
+                <table border="0">
+                    <tr align="right">
+                        <br><br>
+                        <td align="right" colspan="6">
+                            <img src=" <?= base_url('assets/ttd.png') ?>" width="40%">
+                        </td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
